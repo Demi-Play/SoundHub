@@ -1,8 +1,9 @@
 ---
-import NavBar from '../components/NavBar.jsx'; 
-import Footer from '../components/Footer.jsx'; 
+import NavBar from '../components/common/NavBar.jsx'; 
+import Footer from '../components/common/Footer.jsx'; 
 import {AuthProvider} from '../../context/AuthContext.jsx';
 import '../styles/global.css';
+import App from '../App';
 
 const {title = 'SoundHub'} = Astro.props;
 ---
@@ -21,7 +22,7 @@ const {title = 'SoundHub'} = Astro.props;
         <AuthProvider client:load>
             <NavBar client:load />
             <main class="container mx-auto px-4">
-                <slot />
+                <App />
             </main>
             <Footer client:load />
         </AuthProvider>
