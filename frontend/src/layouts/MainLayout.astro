@@ -1,0 +1,40 @@
+---
+import NavBar from '../components/NavBar.jsx'; 
+import Footer from '../components/Footer.jsx'; 
+import {AuthProvider} from '../../context/AuthContext.jsx';
+import '../styles/global.css';
+
+const {title = 'SoundHub'} = Astro.props;
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="SoundHub - Your Music Collaboration Platform" />
+        <title>{title}</title>
+        <link rel="stylesheet" href="/global.css" />
+    </head>
+    <body>
+        <AuthProvider client:load>
+            <NavBar client:load />
+            <main class="container mx-auto px-4">
+                <slot />
+            </main>
+            <Footer client:load />
+        </AuthProvider>
+    </body>
+</html>
+
+<style>
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    main {
+        flex: 1;
+    }
+</style>
